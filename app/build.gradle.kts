@@ -5,6 +5,11 @@ plugins {
 
 android {
     namespace = "com.example.validation"
+
+    buildFeatures {
+        viewBinding = true
+    }
+    
     compileSdk {
         version = release(36)
     }
