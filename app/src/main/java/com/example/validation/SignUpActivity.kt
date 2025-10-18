@@ -25,24 +25,37 @@ class SignUpActivity : AppCompatActivity() {
 
             if (name.isEmpty()) {
                 Toast.makeText(this, "Name required", Toast.LENGTH_SHORT).show()
-
+                return@setOnClickListener
             }
 
             if (email.isEmpty()) {
                 Toast.makeText(this, "Email required", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
             }
             else if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
                 Toast.makeText(this, "Invalid email", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
             }
 
-            if (password.length < 8) {
+            if (password.isEmpty()) {
+                Toast.makeText(this, "Password required", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
+            else if (password.length < 8) {
                 Toast.makeText(this, "Password must be at least 8 characters", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
             }
 
-            if (confirmPassword != password) {
+            if (confirmPassword.isEmpty()) {
+                Toast.makeText(this, "Confirm password required", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
+            else if (confirmPassword != password) {
                 Toast.makeText(this, "Password not match", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
             }
 
+            Toast.makeText(this, "Success", Toast.LENGTH_SHORT).show()
             val intent = Intent(this, HomeActivity::class.java)
             startActivity(intent)
 
